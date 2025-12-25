@@ -8,14 +8,17 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import tech.chirayu.portfolio.pojo.User;
 import tech.chirayu.portfolio.service.MyService;
 
 @Controller 
 @RequestMapping("/test")
+@RestController
 public class MyController {
 	
 	@Autowired
@@ -36,6 +39,11 @@ public class MyController {
 		List<User> asList = Arrays.asList(user3,user1,user2);
 		
 		return asList;
+	}
+	
+	@GetMapping("/sales3")
+	public Map<Integer, Integer> readActualSales(){
+		return myService.readSales();
 	}
 	
 }
